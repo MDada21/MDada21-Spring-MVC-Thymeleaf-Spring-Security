@@ -2,6 +2,7 @@ package org.example.tp_spring_mvc;
 
 import org.example.tp_spring_mvc.entities.Product;
 import org.example.tp_spring_mvc.repository.ProductRepository;
+import org.example.tp_spring_mvc.security.SecurityConfig;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,16 +31,5 @@ public class TpSpringMvcApplication {
             });
         };
     }
-    @Configuration
-    public static class SecurityConfig {
-        @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-            http
-                    .csrf(AbstractHttpConfigurer::disable)
-                    .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
 
-            return http.build();
-        }
-    }
-    
 }
